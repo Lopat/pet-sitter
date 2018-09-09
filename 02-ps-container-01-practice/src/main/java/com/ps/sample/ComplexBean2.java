@@ -3,6 +3,9 @@ package com.ps.sample;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 /**
  * Created by iuliana.cosmina on 3/28/16.
  * Sample class used to make bean creation staged understanding easy.
@@ -22,6 +25,7 @@ public class ComplexBean2 {
 
     // TODO 10. Add JSR 250 attributes to control initialization and destruction of this bean
 
+    @PostConstruct
     public void setSimpleBean2(SimpleBean simpleBean2) {
         logger.info(" --> Stage 2: Calling the setter.");
         this.simpleBean2 = simpleBean2;
@@ -42,6 +46,7 @@ public class ComplexBean2 {
     /**
      * Destroy method
      */
+    @PreDestroy
     private boolean destroyMethod() {
         logger.info(" --> Calling the destroyMethod.");
         simpleBean1 = null;
